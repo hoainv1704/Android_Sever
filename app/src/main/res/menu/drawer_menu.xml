@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/sach"
+            android:icon="@drawable/ic_book"
+            android:title="Sách" />
+        <item
+            android:id="@+id/theloai"
+            android:icon="@drawable/ic_books"
+            android:title="Thể loại" />
+        <item
+            android:id="@+id/hoadon"
+            android:icon="@drawable/ic_invoice"
+            android:title="Hóa đơn" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/gioithieu"
+                android:icon="@drawable/ic_gioithieu"
+                android:title="Giới thiệu" />
+            <item
+                android:id="@+id/thoat"
+                android:icon="@drawable/ic_thoat"
+                android:title="Đăng xuất" />
+        </menu>
+    </item>
+</menu>
