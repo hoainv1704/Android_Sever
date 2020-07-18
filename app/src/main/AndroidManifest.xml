@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GioiThieuFragment"></activity>
+        <activity android:name=".ChiTietSach"></activity>
+        <activity android:name=".GioiThieuFragment" />
         <activity android:name=".HoaDonFragment" />
         <activity android:name=".TheLoaiFragment" />
         <activity android:name=".SachFragment" />
