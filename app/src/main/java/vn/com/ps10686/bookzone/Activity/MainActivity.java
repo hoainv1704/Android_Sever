@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         arrayList.add(new Sach(R.drawable.bia1));
         arrayList.add(new Sach(R.drawable.bia2));
         arrayList.add(new Sach(R.drawable.bia3));
+        arrayList.add(new Sach(R.drawable.bia3));
+        arrayList.add(new Sach(R.drawable.bia3));
+        arrayList.add(new Sach(R.drawable.bia3));
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

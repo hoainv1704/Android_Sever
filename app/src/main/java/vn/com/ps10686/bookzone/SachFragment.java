@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,9 @@ public class SachFragment extends Fragment {
     View view;
     GridView grView;
     SachAdapter sachAdapter;
+    ViewFlipper viewFlipper;
+    Button next;
+    Button previous;
 
     public SachFragment() {
         // Required empty public constructor
@@ -34,6 +39,23 @@ public class SachFragment extends Fragment {
         grView = (GridView) view.findViewById(R.id.grView);
         sachAdapter = new SachAdapter(getContext(), R.layout.row_sach, arrayList);
         grView.setAdapter(sachAdapter);
+        viewFlipper = (ViewFlipper)view.findViewById(R.id.viewFlipper);
+        next = (Button) view.findViewById(R.id.next);
+        previous = (Button) view.findViewById(R.id.previous);
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewFlipper.showNext();
+            }
+        });
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewFlipper.showPrevious();
+            }
+        });
         return view;
     }
+
 }
