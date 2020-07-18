@@ -1,10 +1,12 @@
-package vn.com.ps10686.bookzone;
+package vn.com.ps10686.bookzone.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import vn.com.ps10686.bookzone.R;
 
 public class IntroActivity extends AppCompatActivity {
     private static int SPLAT_TIME_OUT=7000;

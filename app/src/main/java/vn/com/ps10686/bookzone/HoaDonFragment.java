@@ -7,10 +7,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import vn.com.ps10686.bookzone.Adapter.SachAdapter;
+import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.R;
 
 public class HoaDonFragment extends Fragment {
 
+    GridView grView;
+    ArrayList<Sach> arrayList;
+    SachAdapter sachAdapter;
     View view;
 
     public HoaDonFragment() {

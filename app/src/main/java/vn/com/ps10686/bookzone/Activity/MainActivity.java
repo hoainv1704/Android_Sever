@@ -1,4 +1,4 @@
-package vn.com.ps10686.bookzone;
+package vn.com.ps10686.bookzone.Activity;
 
 
 import android.content.DialogInterface;
@@ -15,15 +15,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
+import vn.com.ps10686.bookzone.GioiThieuFragment;
+import vn.com.ps10686.bookzone.HoaDonFragment;
+import vn.com.ps10686.bookzone.Model.Sach;
+import vn.com.ps10686.bookzone.R;
+import vn.com.ps10686.bookzone.SachFragment;
+import vn.com.ps10686.bookzone.TheLoaiFragment;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     private DrawerLayout drawer;
-
+    public static ArrayList<Sach> arrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        arrayList.add(new Sach(R.drawable.bia1));
+        arrayList.add(new Sach(R.drawable.bia2));
+        arrayList.add(new Sach(R.drawable.bia3));
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

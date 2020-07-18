@@ -1,4 +1,4 @@
-package vn.com.ps10686.bookzone;
+package vn.com.ps10686.bookzone.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import vn.com.ps10686.bookzone.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

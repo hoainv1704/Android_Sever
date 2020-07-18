@@ -13,17 +13,17 @@
         <activity android:name=".HoaDonFragment" />
         <activity android:name=".TheLoaiFragment" />
         <activity android:name=".SachFragment" />
-        <activity android:name=".IntroActivity">
+        <activity android:name=".Activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OptionActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activity.OptionActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.MainActivity" />
     </application>
 
 </manifest>

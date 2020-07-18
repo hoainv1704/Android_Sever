@@ -1,4 +1,4 @@
-package vn.com.ps10686.bookzone;
+package vn.com.ps10686.bookzone.Activity;
 
 
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import vn.com.ps10686.bookzone.R;
 
 public class LoginActivity extends AppCompatActivity {
     AutoCompleteTextView atvpass, atvuser;
