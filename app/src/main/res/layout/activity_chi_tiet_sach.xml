@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChiTietSach">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/cts_sach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <FrameLayout
+            android:layout_margin="16dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bia1"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bia1_radius"/>
+        </FrameLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+            <TextView
+                android:id="@+id/cts_id_sach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID Sach: 1001"
+                android:textStyle="bold|italic"
+                />
+            <TextView
+                android:id="@+id/cts_ma_sach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ma Sach: DS102"
+                android:layout_below="@id/cts_id_sach"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:id="@+id/cts_nxb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nha Xuat Ban: Hoa hong"
+                android:layout_below="@id/cts_ma_sach"
+                android:layout_marginTop="10dp"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/cts_tv_binhluan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Binh luan"
+        android:layout_margin="10dp"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:layout_below="@+id/cts_sach"/>
+    <ScrollView
+        android:fillViewport="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cts_scroll_binh_luan"
+        android:layout_below="@id/cts_tv_binhluan"
+        android:layout_margin="16dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aaaaa"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
