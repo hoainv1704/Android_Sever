@@ -10,6 +10,16 @@ public class Sach {
     public Sach(int bia){
         this.bia = bia;
     }
+
+    public Sach(String tenSach, int bia) {
+        this.tenSach = tenSach;
+        this.bia = bia;
+    }
+
+    public Sach(String tenSach) {
+        this.tenSach = tenSach;
+    }
+
     public Sach(){}
     public Sach(String maSach, String maTheLoai, String tenSach, String NXB, int bia) {
         this.maSach = maSach;

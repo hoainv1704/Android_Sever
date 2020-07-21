@@ -29,17 +29,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     private DrawerLayout drawer;
     public static ArrayList<Sach> arrayList = new ArrayList<>();
+    public static ArrayList<Sach> arrayList1 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        arrayList.add(new Sach(R.drawable.bia1));
-        arrayList.add(new Sach(R.drawable.bia2));
-        arrayList.add(new Sach(R.drawable.bia3));
-        arrayList.add(new Sach(R.drawable.bia3));
-        arrayList.add(new Sach(R.drawable.bia3));
-        arrayList.add(new Sach(R.drawable.bia3));
+        arrayList.add(new Sach("Tuổi trẻ đáng giá bao nhiêu",R.drawable.bia1));
+        arrayList.add(new Sach("Ngày mai sẽ khác" ,R.drawable.bia2));
+        arrayList.add(new Sach("something",R.drawable.bia3));
+        arrayList.add(new Sach("something",R.drawable.bia3));
+        arrayList.add(new Sach("something",R.drawable.bia3));
+        arrayList.add(new Sach("something",R.drawable.bia3));
+
+        arrayList1.add(new Sach("Tuổi trẻ đáng giá bao nhiêu"));
+        arrayList1.add(new Sach("Ngày mai sẽ khác"));
+        arrayList1.add(new Sach("something"));
+        arrayList1.add(new Sach("something mmmm"));
+        arrayList1.add(new Sach("something ...."));
+        arrayList1.add(new Sach("something ??"));
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

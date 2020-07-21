@@ -8,19 +8,25 @@
     tools:context=".SachFragment">
 
     <LinearLayout
-
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false">
 
-            android:id="@+id/edtFind"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:src="@drawable/ic_find"
-            android:layout_width="40dp"
-            android:layout_height="40dp"/>
+            <requestFocus />
+
+        </SearchView>
+
+        <ListView
+            android:translationZ="100dp"
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            />
     </LinearLayout>
 
     <RelativeLayout
@@ -30,95 +36,12 @@
         android:layout_height="150dp"
         >
 
-        <ViewFlipper
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/viewFlipper">
+        <AdapterViewFlipper
+            android:id="@+id/viewAdapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView"
-                android:src="@drawable/bia1"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView2"
-                android:src="@drawable/bia2"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView3"
-                android:src="@drawable/bia3"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView4"
-                android:src="@drawable/bia1"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView5"
-                android:src="@drawable/bia2"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView6"
-                android:src="@drawable/bia3"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView7"
-                android:src="@drawable/bia1"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView8"
-                android:src="@drawable/bia2"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView9"
-                android:src="@drawable/bia3"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView10"
-                android:src="@drawable/bia1"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView11"
-                android:src="@drawable/bia2"/>
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:scaleType="fitXY"
-                android:id="@+id/imageView12"
-                android:src="@drawable/bia3"/>
-        </ViewFlipper>
+        </AdapterViewFlipper>
 
         <Button
             android:id="@+id/next"
