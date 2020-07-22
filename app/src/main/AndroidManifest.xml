@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChiTietSach">
+        <activity android:name=".Activity.InterestSurveyActivity">
 
         </activity>
+        <activity android:name=".ChiTietSach"></activity>
         <activity android:name=".GioiThieuFragment" />
         <activity android:name=".HoaDonFragment" />
         <activity android:name=".TheLoaiFragment" />
@@ -22,7 +23,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".Activity.OptionActivity" />
         <activity android:name=".Activity.LoginActivity" />

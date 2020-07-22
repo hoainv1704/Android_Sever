@@ -17,7 +17,7 @@ import vn.com.ps10686.bookzone.R;
 
 
 public class IntroActivity extends AppCompatActivity {
-    private static int SPLAT_TIME_OUT=3000;
+    private static int SPLAT_TIME_OUT=2000;
     NguoiDung nguoiDungHienTai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

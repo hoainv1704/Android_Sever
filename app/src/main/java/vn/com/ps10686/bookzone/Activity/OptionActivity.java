@@ -37,14 +37,33 @@ public class OptionActivity extends AppCompatActivity {
         btnGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentGuest = new Intent(OptionActivity.this,MainActivity.class);
-                Bundle b = new Bundle();
-                b.putString("username", "Guest");
-                b.putFloat("sodu", 0);
-                intentGuest.putExtra("info", b);
-                startActivity(intentGuest);
-
+                checkNguoiDungDaLamSurvey();
             }
         });
+    }
+    SharedPreferences sharedPref;
+    boolean isNguoiDungCu=true;
+
+    void checkNguoiDungDaLamSurvey(){
+        //Nếu đã làm survey
+        if(isNguoiDungCu){
+            Intent i=new Intent(OptionActivity.this,MainActivity.class);
+            Bundle b = new Bundle();
+            b.putString("username","Guest");
+            b.putFloat("sodu", 0);
+
+            i.putExtra("info", b);
+
+            startActivity(i);
+        }
+        //Nếu chưa làm survey
+        else {
+            Intent i=new Intent(OptionActivity.this,InterestSurveyActivity.class);
+            Bundle b = new Bundle();
+            b.putString("username", "Guest");
+            b.putFloat("sodu", 0);
+            i.putExtra("info", b);
+            startActivity(i);
+        }
     }
 }

@@ -11,7 +11,7 @@
                 android:angle="0" />
 
             <corners
-                android:radius="4dp" />
+                android:radius="10dp" />
 
             <padding
                 android:right="10dp"
@@ -34,7 +34,7 @@
 
 
             <corners
-                android:radius="4dp" />
+                android:radius="10dp" />
 
             <padding
                 android:right="10dp"

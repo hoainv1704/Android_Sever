@@ -1,7 +1,9 @@
 package vn.com.ps10686.bookzone.Model;
 
-class Tag {
-    int hinhNhan;
+import android.graphics.drawable.Drawable;
+
+public class Tag {
+    int mauNhan;
     String maNhan;
     String tenNhan;
 
@@ -10,18 +12,18 @@ class Tag {
         this.tenNhan = tenNhan;
     }
 
-    public Tag(int hinhNhan, String maNhan, String tenNhan) {
-        this.hinhNhan = hinhNhan;
+    public Tag(int mauNhan, String maNhan, String tenNhan) {
+        this.mauNhan = mauNhan;
         this.maNhan = maNhan;
         this.tenNhan = tenNhan;
     }
 
-    public int getHinhNhan() {
-        return hinhNhan;
+    public int getMauNhan() {
+        return mauNhan;
     }
 
-    public void setHinhNhan(int hinhNhan) {
-        this.hinhNhan = hinhNhan;
+    public void setMauNhan(int mauNhan) {
+        this.mauNhan = mauNhan;
     }
 
     public String getMaNhan() {

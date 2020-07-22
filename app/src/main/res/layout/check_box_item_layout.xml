@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/tag1"
+    android:layout_width="175dp"
+    android:layout_height="100dp">
+    <CheckBox
+        android:id="@+id/chkBoxYeuThich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:button="@drawable/custom_checkbox"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TAG1"
+        android:textColor="#fff"
+        android:id="@+id/tvTenTag"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

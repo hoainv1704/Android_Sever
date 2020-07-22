@@ -4,6 +4,7 @@ package vn.com.ps10686.bookzone.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -125,7 +126,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         editor.putString(getString(R.string.saved_user_name), "");
                         editor.putString(getString(R.string.saved_so_du),"");
                         editor.commit();
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        Intent i = new Intent(MainActivity.this, IntroActivity.class);
+                        startActivity(i);
                         finish();
                     }
                 });
