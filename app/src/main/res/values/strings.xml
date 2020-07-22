@@ -1,6 +1,7 @@
 <resources>
     //Authentication
     <string name="app_name">BookZone</string>
+    <string name="package_name">vn.com.ps10686.bookzone</string>
     <string name="usernameReg">Username</string>
     <string name="emailReg">Email</string>
     <string name="passwordReg">Password</string>
@@ -13,6 +14,8 @@
     //Open and close nav drawer
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name = "saved_user_name">saved_user_name</string>
+    <string name = "saved_so_du">saved_so_du</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

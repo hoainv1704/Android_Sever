@@ -15,6 +15,11 @@
             android:id="@+id/hoadon"
             android:icon="@drawable/ic_invoice"
             android:title="Hóa đơn" />
+        <item
+            android:id="@+id/thongtinnguoidung"
+            android:title="Thông tin cá nhân"
+            android:icon="@drawable/ic_action_info"
+            />
     </group>
 
     <item android:title="">

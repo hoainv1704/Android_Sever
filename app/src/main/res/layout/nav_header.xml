@@ -12,21 +12,50 @@
         android:layout_width="100px"
         android:layout_height="100px"
         android:src="@drawable/avatar"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="Username"
-        android:textStyle="bold"
-        android:textColor="#121111"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_action_email"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#414040"
+            android:padding="5dp"
+            android:id="@+id/tvUser"
+            android:text="email@fpt.edu.vn"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#414040"
-        android:text="email@fpt.edu.vn"/>
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_action_credit"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="0"
+            android:textStyle="bold"
+            android:textColor="#121111"
+            android:padding="5dp"
+            android:id="@+id/tvSoDu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+
+    </LinearLayout>
 
 
 

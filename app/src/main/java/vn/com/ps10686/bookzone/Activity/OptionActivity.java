@@ -4,10 +4,12 @@ package vn.com.ps10686.bookzone.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import vn.com.ps10686.bookzone.BuildConfig;
 import vn.com.ps10686.bookzone.R;
 
 
@@ -18,9 +20,9 @@ public class OptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
+
         btnGuest=findViewById(R.id.btnGuest);
         btnLog=findViewById(R.id.btnLog);
-
 
 
         btnLog.setOnClickListener(new View.OnClickListener() {
@@ -36,11 +38,13 @@ public class OptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentGuest = new Intent(OptionActivity.this,MainActivity.class);
+                Bundle b = new Bundle();
+                b.putString("username", "Guest");
+                b.putFloat("sodu", 0);
+                intentGuest.putExtra("info", b);
                 startActivity(intentGuest);
 
             }
         });
-
-
     }
 }

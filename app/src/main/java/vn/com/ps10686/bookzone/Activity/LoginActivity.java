@@ -21,17 +21,20 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        atvuser=findViewById(R.id.atvEmailLog);
+        atvuser=findViewById(R.id.atvUser);
         atvpass=findViewById(R.id.atvPasswordLog);
         bt=findViewById(R.id.btnSignIn);
         tvSignIn=findViewById(R.id.tvSignIn);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(atvuser.getText().toString().equals("abc@gmail.com") && atvpass.getText().toString().equals("123456789"))
+                if(atvuser.getText().toString().equals("abc") && atvpass.getText().toString().equals("123456789"))
                 {
                     Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("username", atvuser.getText().toString());
+                    i.putExtra("info", b);
+
                     startActivity(i);
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                     overridePendingTransition(R.anim.next_in,R.anim.next_out);
