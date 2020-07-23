@@ -30,7 +30,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentLog = new Intent(OptionActivity.this,LoginActivity.class);
                 startActivity(intentLog);
-
             }
         });
 
@@ -42,7 +41,7 @@ public class OptionActivity extends AppCompatActivity {
         });
     }
     SharedPreferences sharedPref;
-    boolean isNguoiDungCu=true;
+    boolean isNguoiDungCu=false;
 
     void checkNguoiDungDaLamSurvey(){
         //Nếu đã làm survey
