@@ -52,4 +52,8 @@ public class CauTraLoi {
     public void setGiaTien(float giaTien) {
         this.giaTien = giaTien;
     }
+
+    public String getJsonObject(){
+        return "{maCauTraLoi:"+maCauTraLoi+",maCauhoi:"+maCauHoi+",maQuanTriVien:"+maQuanTriVien+",giaTien:"+giaTien+"}";
+    }
 }

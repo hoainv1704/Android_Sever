@@ -3,6 +3,8 @@ package vn.com.ps10686.bookzone;
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +43,12 @@ public class SachFragment extends Fragment{
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        setHasOptionsMenu(true);
 
         view = inflater.inflate(R.layout.fragment_sach, container, false);
         grView = (GridView) view.findViewById(R.id.grView);
@@ -95,5 +98,11 @@ public class SachFragment extends Fragment{
             }
         });
         return view;
+    }
+
+        @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_item, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

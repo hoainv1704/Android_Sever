@@ -3,10 +3,17 @@ package vn.com.ps10686.bookzone.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,17 +24,28 @@ import vn.com.ps10686.bookzone.R;
 
 
 public class IntroActivity extends AppCompatActivity {
-    private static int SPLAT_TIME_OUT=2000;
     NguoiDung nguoiDungHienTai;
+
+    //khai bao bien chuyen man hinh
+    private static int SPLAT_TIME_OUT=6000;
+
+    //khai bao doi tuong
+    private ImageView logoSplash, chmaraTech, logoWhite;
+    private Animation anim1, anim2, anim3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-//        dieuHuong();
-//        nguoiDungHienTai = new NguoiDung();
-//        checkFirstRun();
+
+        //Gọi hàm
+        init();
+        fullScreen();
+        intentScreen();
+        actionSplash();
         dieuHuong();
     }
+
     //Kiểm tra người dùng hiện tại
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -65,7 +83,7 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
-//    private void checkFirstRun() {
+    //    private void checkFirstRun() {
 //
 //        Context context = getApplication();
 //
@@ -98,5 +116,79 @@ public class IntroActivity extends AppCompatActivity {
 //        // Update the shared preferences with the current version code
 //        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
 //    }
+
+
+
+    private void actionSplash() {
+        logoSplash.startAnimation(anim1);
+        anim1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                logoSplash.startAnimation(anim2);
+                logoSplash.setVisibility(View.GONE);
+
+                logoWhite.startAnimation(anim3);
+                chmaraTech.startAnimation(anim3);
+                anim3.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        logoWhite.setVisibility(View.VISIBLE);
+                        chmaraTech.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+    private void intentScreen() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent=new Intent(IntroActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        },SPLAT_TIME_OUT);
+    }
+
+    private void fullScreen() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
+
+    //anhXa
+    private void init() {
+        logoSplash = findViewById(R.id.ivLogoSplash);
+        logoWhite = findViewById(R.id.ivLogoWhite);
+        chmaraTech = findViewById(R.id.ivCHTtext);
+        anim1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
+        anim2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadeout);
+        anim3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
+    }
 }
 

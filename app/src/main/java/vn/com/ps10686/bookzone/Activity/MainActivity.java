@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 import vn.com.ps10686.bookzone.Fragments.NguoiDungFragment;
+import vn.com.ps10686.bookzone.GioHangFragment;
 import vn.com.ps10686.bookzone.GioiThieuFragment;
 import vn.com.ps10686.bookzone.HoaDonFragment;
 import vn.com.ps10686.bookzone.Model.NguoiDung;
@@ -147,6 +148,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.search:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new SachFragment()).commit();
+//                toolbar.setTitle("Sách");
+//                return true;
+
+            case R.id.cart:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new GioHangFragment()).commit();
+                toolbar.setTitle("Giỏ hàng");
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     @Override
