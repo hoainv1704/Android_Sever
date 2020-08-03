@@ -12,15 +12,16 @@ import java.util.List;
 import java.util.Locale;
 
 import vn.com.ps10686.bookzone.Model.Sach;
+import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
 
 public class SearchAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
-    private List<Sach> list = null;
-    private ArrayList<Sach> arraylist;
+    private List<Sach1> list = null;
+    private ArrayList<Sach1> arraylist;
 
-    public SearchAdapter(Context context, List<Sach> list) {
+    public SearchAdapter(Context context, List<Sach1> list) {
         this.arraylist = new ArrayList<>();
         this.context = context;
         this.list = list;
@@ -60,8 +61,8 @@ public class SearchAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        Sach sach = list.get(i);
-        holder.tenSach.setText(sach.getTenSach());
+        Sach1 sach1 = list.get(i);
+        holder.tenSach.setText(sach1.getTenSach());
         return view;
     }
     public void filter(String charText) {
@@ -70,7 +71,7 @@ public class SearchAdapter extends BaseAdapter {
         if (charText.length() == 0) {
             list.addAll(arraylist);
         } else {
-            for (Sach wp : arraylist) {
+            for (Sach1 wp : arraylist) {
                 if (wp.getTenSach().toLowerCase(Locale.getDefault()).contains(charText)) {
                     list.add(wp);
                 }

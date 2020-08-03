@@ -1,7 +1,6 @@
 package vn.com.ps10686.bookzone.Activity;
 
 
-import android.content.Context;
 import android.content.DialogInterface;
 
 import android.content.Intent;
@@ -10,10 +9,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -26,19 +25,30 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.com.ps10686.bookzone.Fragments.NguoiDungFragment;
 import vn.com.ps10686.bookzone.GioHangFragment;
 import vn.com.ps10686.bookzone.GioiThieuFragment;
 import vn.com.ps10686.bookzone.HoaDonFragment;
-import vn.com.ps10686.bookzone.Model.NguoiDung;
 import vn.com.ps10686.bookzone.Model.Sach;
+import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
 import vn.com.ps10686.bookzone.SachFragment;
 import vn.com.ps10686.bookzone.TheLoaiFragment;
+import vn.com.ps10686.bookzone.api.API;
+import vn.com.ps10686.bookzone.api.RetrofitClient;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
+
+
+
     Toolbar toolbar;
     private DrawerLayout drawer;
     public static ArrayList<Sach> arrayList = new ArrayList<>();
@@ -50,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //getSach();
+
 
         sharedPref=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = sharedPref.edit();
@@ -220,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         arrayList.add(new Sach("something",R.drawable.bia3));
         arrayList.add(new Sach("something",R.drawable.bia3));
 
+        System.out.println(arrayList);
         arrayList1.add(new Sach("Tuổi trẻ đáng giá bao nhiêu"));
         arrayList1.add(new Sach("Ngày mai sẽ khác"));
         arrayList1.add(new Sach("something"));
@@ -231,5 +245,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     void checkSoDu(){
 
     }
+
+
+
 }
 

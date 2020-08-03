@@ -23,6 +23,7 @@ import vn.com.ps10686.bookzone.Adapter.SearchAdapter;
 import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.R;
 
+import static vn.com.ps10686.bookzone.Activity.IntroActivity.sach1s;
 import static vn.com.ps10686.bookzone.Activity.MainActivity.arrayList;
 import static vn.com.ps10686.bookzone.Activity.MainActivity.arrayList1;
 
@@ -55,16 +56,20 @@ public class SachFragment extends Fragment{
         searchView = (SearchView) view.findViewById(R.id.search);
         adapterViewFlipper = view.findViewById(R.id.viewAdapter);
         listView =(ListView) view.findViewById(R.id.listview);
-        flipperAdapter = new FlipperAdapter(getContext(), arrayList);
+        // sét adapter choh view flipper
+        flipperAdapter = new FlipperAdapter(getContext(), sach1s);
         adapterViewFlipper.setAdapter(flipperAdapter);
         adapterViewFlipper.setFlipInterval(3000);
-// set auto start for flipping between views
         adapterViewFlipper.setAutoStart(true);
+        // sét adapter cho gridview sách
         sachAdapter = new SachAdapter(getContext(), R.layout.row_sach, arrayList);
         grView.setAdapter(sachAdapter);
-        searchAdapter = new SearchAdapter(getContext(),arrayList1);
+        // sét adapter cho search view
+        searchAdapter = new SearchAdapter(getContext(), sach1s);
         listView.setAdapter(searchAdapter);
         listView.setVisibility(View.INVISIBLE);
+
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -84,6 +89,9 @@ public class SachFragment extends Fragment{
 
         next = (Button) view.findViewById(R.id.next);
         previous = (Button) view.findViewById(R.id.previous);
+
+        next.getBackground().setAlpha(50);
+        previous.getBackground().setAlpha(50);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
