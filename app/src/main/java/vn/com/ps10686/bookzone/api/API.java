@@ -7,6 +7,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import vn.com.ps10686.bookzone.Model.BinhLuan;
 import vn.com.ps10686.bookzone.Model.NguoiDung;
 import vn.com.ps10686.bookzone.Model.Sach1;
 
@@ -19,4 +20,7 @@ public interface API {
      @FormUrlEncoded
      @POST ("/dangNhap")
     Call<NguoiDung>dangNhap(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass);
+
+     @POST ("/chitietsach")
+    Call<Sach1>chitietsach(@Field("_id")String _id);
 }

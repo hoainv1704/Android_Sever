@@ -1,24 +1,32 @@
 package vn.com.ps10686.bookzone.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
+import vn.com.ps10686.bookzone.Activity.ChiTietSach;
 import vn.com.ps10686.bookzone.Model.Sach;
+import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
+
+import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
 
 public class SachAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<Sach> saches;
+    private List<Sach1> saches;
 
-    public SachAdapter(Context context, int layout, List<Sach> saches) {
+    public SachAdapter(Context context, int layout, List<Sach1> saches) {
         this.context = context;
         this.layout = layout;
         this.saches = saches;
@@ -30,7 +38,9 @@ public class SachAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Object getItem(int i)
+    {
+
         return null;
     }
 
@@ -57,8 +67,10 @@ public class SachAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        Sach sach = saches.get(i);
-           holder.imgView.setImageResource(sach.getBia());
+        Sach1 sach = saches.get(i);
+        Picasso.with(context).load( ROOT_URL + sach.getHinh().substring(7)).into(holder.imgView);
+
         return view;
     }
+
 }

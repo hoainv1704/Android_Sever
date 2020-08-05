@@ -1,6 +1,4 @@
 package vn.com.ps10686.bookzone.Activity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -35,6 +33,8 @@ import vn.com.ps10686.bookzone.api.RetrofitClient;
 public class IntroActivity extends AppCompatActivity {
     NguoiDung nguoiDungHienTai;
     public static ArrayList<Sach1> sach1s = new ArrayList<>();
+    public static ArrayList<Sach1> sach2s = new ArrayList<>();
+    public static ArrayList<Sach1> sach3s = new ArrayList<>();
     RetrofitClient retrofitClient = new RetrofitClient();
 
     //khai bao bien chuyen man hinh
@@ -208,9 +208,12 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Sach1>> call, Response<List<Sach1>> response) {
                 List<Sach1> ds = response.body();
+                System.out.println("id sach: " + response.body());
                 for (int i = 0; i <ds.size(); i++){
                     Sach1 sach1 = ds.get(i);
-                    sach1s.add((sach1));
+                    sach1s.add(sach1);
+                    sach2s.add(sach1);
+                    sach3s.add(sach1);
                 }
                 System.out.println("sách" + sach1s);
             }
