@@ -10,18 +10,27 @@ public class Sach1 {
     private String nhaXuatBan;
     private String namXuatBan;
     private String taiBan;
+    private String hinh;
 
-    public Sach1(String tenSach, String tenLoai, String tacGia, String nhaXuatBan, String namXuatBan, String taiBan) {
+    public Sach1(String tenSach, String maNhan, String tenLoai, String tacGia, String nhaXuatBan, String namXuatBan, String taiBan, String hinh) {
+        this.tenSach = tenSach;
+        this.maNhan = maNhan;
+        this.tenLoai = tenLoai;
+        this.tacGia = tacGia;
+        this.nhaXuatBan = nhaXuatBan;
+        this.namXuatBan = namXuatBan;
+        this.taiBan = taiBan;
+        this.hinh = hinh;
+    }
+
+    public Sach1(String tenSach, String tenLoai, String tacGia, String nhaXuatBan, String namXuatBan, String taiBan, String hinh) {
         this.tenSach = tenSach;
         this.tenLoai = tenLoai;
         this.tacGia = tacGia;
         this.nhaXuatBan = nhaXuatBan;
         this.namXuatBan = namXuatBan;
         this.taiBan = taiBan;
-    }
-
-    public Sach1(String tenSach) {
-        this.tenSach = tenSach;
+        this.hinh = hinh;
     }
 
     public Sach1() {
@@ -83,6 +92,14 @@ public class Sach1 {
         this.taiBan = taiBan;
     }
 
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
+
     @Override
     public String toString() {
         return "Sach1{" +
@@ -93,6 +110,7 @@ public class Sach1 {
                 ", nhaXuatBan='" + nhaXuatBan + '\'' +
                 ", namXuatBan='" + namXuatBan + '\'' +
                 ", taiBan='" + taiBan + '\'' +
+                ", hinh='" + hinh + '\'' +
                 '}';
     }
 }

@@ -1,35 +1,38 @@
 package vn.com.ps10686.bookzone.Model;
 
 public class NguoiDung {
-    String maNguoiDung;
+    String tenNguoiDung;
     String matKhau;
-    String mail;
+    String email;
     String sdt;
     String maNhan1;
     String maNhan2;
     float soDu;
 
-    public NguoiDung(){}
-
-    public NguoiDung(String maNguoiDung, float soDu) {
-        this.maNguoiDung = maNguoiDung;
-        this.soDu = soDu;
-    }
-
-    public NguoiDung(String maNguoiDung, String matKhau, String mail, String sdt, float soDu) {
-        this.maNguoiDung = maNguoiDung;
+    public NguoiDung(String tenNguoiDung, String matKhau, String email, String sdt, String maNhan1, String maNhan2, float soDu) {
+        this.tenNguoiDung = tenNguoiDung;
         this.matKhau = matKhau;
-        this.mail = mail;
+        this.email = email;
         this.sdt = sdt;
+        this.maNhan1 = maNhan1;
+        this.maNhan2 = maNhan2;
         this.soDu = soDu;
     }
 
-    public String getMaNguoiDung() {
-        return maNguoiDung;
+    public NguoiDung(String tenNguoiDung, String matKhau) {
+        this.tenNguoiDung = tenNguoiDung;
+        this.matKhau = matKhau;
     }
 
-    public void setMaNguoiDung(String maNguoiDung) {
-        this.maNguoiDung = maNguoiDung;
+    public NguoiDung() {
+    }
+
+    public String getTenNguoiDung() {
+        return tenNguoiDung;
+    }
+
+    public void setTenNguoiDung(String tenNguoiDung) {
+        this.tenNguoiDung = tenNguoiDung;
     }
 
     public String getMatKhau() {
@@ -40,12 +43,12 @@ public class NguoiDung {
         this.matKhau = matKhau;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSdt() {
@@ -54,14 +57,6 @@ public class NguoiDung {
 
     public void setSdt(String sdt) {
         this.sdt = sdt;
-    }
-
-    public float getSoDu() {
-        return soDu;
-    }
-
-    public void setSoDu(float soDu) {
-        this.soDu = soDu;
     }
 
     public String getMaNhan1() {
@@ -80,10 +75,24 @@ public class NguoiDung {
         this.maNhan2 = maNhan2;
     }
 
+    public float getSoDu() {
+        return soDu;
+    }
+
+    public void setSoDu(float soDu) {
+        this.soDu = soDu;
+    }
+
     @Override
     public String toString() {
         return "NguoiDung{" +
-                "maNguoiDung='" + maNguoiDung + '\'' +
+                "tenNguoiDung='" + tenNguoiDung + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                ", email='" + email + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", maNhan1='" + maNhan1 + '\'' +
+                ", maNhan2='" + maNhan2 + '\'' +
+                ", soDu=" + soDu +
                 '}';
     }
 }

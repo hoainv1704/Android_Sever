@@ -232,8 +232,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         arrayList.add(new Sach("something",R.drawable.bia3));
         arrayList.add(new Sach("something",R.drawable.bia3));
         arrayList.add(new Sach("something",R.drawable.bia3));
-
-        System.out.println(arrayList);
         arrayList1.add(new Sach("Tuổi trẻ đáng giá bao nhiêu"));
         arrayList1.add(new Sach("Ngày mai sẽ khác"));
         arrayList1.add(new Sach("something"));

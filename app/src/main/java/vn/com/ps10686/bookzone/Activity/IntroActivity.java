@@ -210,9 +210,9 @@ public class IntroActivity extends AppCompatActivity {
                 List<Sach1> ds = response.body();
                 for (int i = 0; i <ds.size(); i++){
                     Sach1 sach1 = ds.get(i);
-                    sach1s.add(sach1);
+                    sach1s.add((sach1));
                 }
-                System.out.println("danh sách sách: " + sach1s);
+                System.out.println("sách" + sach1s);
             }
 
             @Override

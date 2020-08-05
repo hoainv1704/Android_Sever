@@ -8,12 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
+
+import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
 
 public class FlipperAdapter extends BaseAdapter {
 
@@ -61,7 +65,10 @@ public class FlipperAdapter extends BaseAdapter {
 
 
         ImageView topSach = (ImageView) view.findViewById(R.id.topSach);
-        topSach.setImageResource(R.drawable.bia1);
+        Picasso.with(context)
+                .load(ROOT_URL + "uploads/bia1.jpg")
+                .placeholder(R.drawable.avatar)
+                .into(topSach);
         return view;
     }
 }
