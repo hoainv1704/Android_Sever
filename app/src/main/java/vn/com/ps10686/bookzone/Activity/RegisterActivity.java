@@ -25,7 +25,6 @@ import vn.com.ps10686.bookzone.R;
 import vn.com.ps10686.bookzone.api.API;
 import vn.com.ps10686.bookzone.api.RetrofitClient;
 
-import static vn.com.ps10686.bookzone.Activity.IntroActivity.sach1s;
 
 public class RegisterActivity extends AppCompatActivity {
 

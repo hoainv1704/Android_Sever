@@ -44,7 +44,7 @@ public class BinhLuanAdapter extends RecyclerView.Adapter<BinhLuanAdapter.ViewHo
     public void onBindViewHolder(@NonNull final BinhLuanAdapter.ViewHolder holder, final int position) {
 
         final BinhLuan bl = ds.get(position);
-        holder.tvTenND.setText(bl.getTenND()+"");
+        holder.tvTenND.setText(bl.getTenNguoiDung()+"");
         holder.tvNDBL.setText(bl.getNdBL()+"");
 
     }

@@ -1,22 +1,32 @@
 package vn.com.ps10686.bookzone.Model;
 
 public class BinhLuan {
-    public String tenND;
+    public String tenNguoiDung;
+    public String maSach;
     public String ndBL;
 
-    public BinhLuan(String tenND, String ndBL) {
-        this.tenND = tenND;
+    public BinhLuan(String maSach, String ndBL, String maNguoiDung) {
+        this.tenNguoiDung = maNguoiDung;
         this.ndBL = ndBL;
+        this.maSach = maSach;
     }
 
     public BinhLuan(){}
 
-    public String getTenND() {
-        return tenND;
+    public String getTenNguoiDung() {
+        return tenNguoiDung;
     }
 
-    public void setTenND(String tenND) {
-        this.tenND = tenND;
+    public void setTenNguoiDung(String tenNguoiDung) {
+        this.tenNguoiDung = tenNguoiDung;
+    }
+
+    public String getMaSach() {
+        return maSach;
+    }
+
+    public void setMaSach(String maSach) {
+        this.maSach = maSach;
     }
 
     public String getNdBL() {
@@ -30,7 +40,8 @@ public class BinhLuan {
     @Override
     public String toString() {
         return "BinhLuan{" +
-                "tenND='" + tenND + '\'' +
+                "tenNguoiDung='" + tenNguoiDung + '\'' +
+                ", maSach='" + maSach + '\'' +
                 ", ndBL='" + ndBL + '\'' +
                 '}';
     }

@@ -34,6 +34,7 @@ import vn.com.ps10686.bookzone.Fragments.NguoiDungFragment;
 import vn.com.ps10686.bookzone.GioHangFragment;
 import vn.com.ps10686.bookzone.GioiThieuFragment;
 import vn.com.ps10686.bookzone.HoaDonFragment;
+import vn.com.ps10686.bookzone.Model.BinhLuan;
 import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
@@ -45,30 +46,27 @@ import vn.com.ps10686.bookzone.api.RetrofitClient;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
-
-
     Toolbar toolbar;
     private DrawerLayout drawer;
-    public static ArrayList<Sach> arrayList = new ArrayList<>();
-    public static ArrayList<Sach> arrayList1 = new ArrayList<>();
+
 //    public static NguoiDung nguoiDungSauDangNhap;
-    static String username;
-    static float sodu;
+    public static String username;
+    public static float sodu;
+    public static ArrayList<Sach1> sach1s = new ArrayList<>();
+    public static ArrayList<Sach1> sach2s = new ArrayList<>();;
+    public static ArrayList<Sach1> sach3s = new ArrayList<>();;
+    RetrofitClient retrofitClient = new RetrofitClient();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //getSach();
-
-
+        getSach();
         sharedPref=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = sharedPref.edit();
+
         fakeData();
         setNguoiDungSauDangNhap();
-
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         int mau= Color.parseColor("#31b1d1");
@@ -200,22 +198,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
-    String saved_user, saved_sodu;
+    public static String saved_user, saved_sodu;
     //Sau khi đăng nhập lưu người dùng vào lần sau
     private void setNguoiDungSauDangNhap() {
             // TODO This is a new install (or the user cleared the shared preferences)
             // Sau khi đăng nhập có tài khoản và số dư
         saved_user = sharedPref.getString(getString(R.string.saved_user_name),"");
         saved_sodu = sharedPref.getString(getString(R.string.saved_so_du),"");
+
         if(saved_user.equals("")){
             Bundle b = getIntent().getBundleExtra("info");
             username = b.getString("username");
             sodu = b.getFloat("sodu");
+
 //            Context context = getApplication();
 //            sharedPref = MainActivity.this.getSharedPreferences(getString(R.string.package_name),Context.MODE_PRIVATE);
 
             editor.putString(getString(R.string.saved_user_name), username);
             editor.putString(getString(R.string.saved_so_du),sodu+"");
+
             editor.commit();}
 
 //        Toast.makeText(MainActivity.this, saved_user, Toast.LENGTH_SHORT).show();
@@ -226,22 +227,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         saved_sodu = sharedPref.getString(getString(R.string.saved_so_du),"");
     }
     void fakeData(){
-        arrayList.add(new Sach("Tuổi trẻ đáng giá bao nhiêu",R.drawable.bia1));
-        arrayList.add(new Sach("Ngày mai sẽ khác" ,R.drawable.bia2));
-        arrayList.add(new Sach("something",R.drawable.bia3));
-        arrayList.add(new Sach("something",R.drawable.bia3));
-        arrayList.add(new Sach("something",R.drawable.bia3));
-        arrayList.add(new Sach("something",R.drawable.bia3));
-        arrayList1.add(new Sach("Tuổi trẻ đáng giá bao nhiêu"));
-        arrayList1.add(new Sach("Ngày mai sẽ khác"));
-        arrayList1.add(new Sach("something"));
-        arrayList1.add(new Sach("something mmmm"));
-        arrayList1.add(new Sach("something ...."));
-        arrayList1.add(new Sach("something ??"));
+
+
+//        binhLuans.add(new BinhLuan("Duc", "Something"));
+//        binhLuans.add(new BinhLuan("Huy", "Do something"));
+
+
     }
     //Dựa vào tài khoản đăng nhập kiểm tra số dư
     void checkSoDu(){
 
+    }
+
+    private void getSach(){
+        API api = retrofitClient.getClien().create(API.class);
+        api.getSach().enqueue(new Callback<List<Sach1>>() {
+            @Override
+            public void onResponse(Call<List<Sach1>> call, Response<List<Sach1>> response) {
+                List<Sach1> ds = response.body();
+                System.out.println("id sach: " + response.body());
+                for (int i = 0; i <ds.size(); i++){
+                    Sach1 sach1 = ds.get(i);
+
+                    sach1s.add(sach1);
+                    sach2s.add(sach1);
+                    sach3s.add(sach1);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Sach1>> call, Throwable t) {
+                Log.i("Sach", t.getMessage());
+            }
+        });
     }
 
 

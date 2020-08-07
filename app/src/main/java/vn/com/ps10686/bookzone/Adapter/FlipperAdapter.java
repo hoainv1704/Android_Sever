@@ -66,7 +66,7 @@ public class FlipperAdapter extends BaseAdapter {
 
         ImageView topSach = (ImageView) view.findViewById(R.id.topSach);
         Picasso.with(context)
-                .load(ROOT_URL + "uploads/bia1.jpg")
+                .load(ROOT_URL + list.get(i).getHinh().substring(7))
                 .placeholder(R.drawable.avatar)
                 .into(topSach);
         return view;

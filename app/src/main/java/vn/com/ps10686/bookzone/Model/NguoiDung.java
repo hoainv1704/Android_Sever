@@ -1,6 +1,7 @@
 package vn.com.ps10686.bookzone.Model;
 
 public class NguoiDung {
+    String _id;
     String tenNguoiDung;
     String matKhau;
     String email;
@@ -17,6 +18,18 @@ public class NguoiDung {
         this.maNhan1 = maNhan1;
         this.maNhan2 = maNhan2;
         this.soDu = soDu;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public NguoiDung(String _id) {
+        this._id = _id;
     }
 
     public NguoiDung(String tenNguoiDung, String matKhau) {
@@ -87,6 +100,7 @@ public class NguoiDung {
     public String toString() {
         return "NguoiDung{" +
                 "tenNguoiDung='" + tenNguoiDung + '\'' +
+                "_id='" + _id + '\'' +
                 ", matKhau='" + matKhau + '\'' +
                 ", email='" + email + '\'' +
                 ", sdt='" + sdt + '\'' +

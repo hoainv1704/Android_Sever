@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button bt;
     private RetrofitClient retrofitClient = new RetrofitClient();
     public static ArrayList<NguoiDung> nguoiDungs = new ArrayList<>();
-
+    public static ArrayList<NguoiDung> nguoiDungs1 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         atvpass=findViewById(R.id.atvPasswordLog);
         bt=findViewById(R.id.btnSignIn);
         tvSignUp=findViewById(R.id.tvSignUp);
+
+        dangNhap1();
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,14 +55,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    boolean isNguoiDungCu=true;
+    boolean isNguoiDungCu=false;
     void checkNguoiDungDaLamSurvey(){
         //Nếu đã làm survey\
         NguoiDung nguoiDung = nguoiDungs.get(0);
         if(isNguoiDungCu){
             Intent i=new Intent(LoginActivity.this,MainActivity.class);
             Bundle b = new Bundle();
-
+            b.putString("_id", nguoiDung.get_id());
             b.putString("username", nguoiDung.getTenNguoiDung());
             b.putFloat("sodu", nguoiDung.getSoDu());
             i.putExtra("info", b);
@@ -73,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             Bundle b = new Bundle();
             b.putString("username", nguoiDung.getTenNguoiDung());
             b.putFloat("sodu", nguoiDung.getSoDu());
+            b.putString("_id", nguoiDung.get_id());
             i.putExtra("info", b);
             startActivity(i);
         }
@@ -94,6 +97,28 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else if (response.code() == 404){
                     Toast.makeText(LoginActivity.this, "Thông tin đăng nhập sai", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NguoiDung> call, Throwable t) {
+                Log.i("Sach", t.getMessage());
+            }
+        });
+    }
+    public void dangNhap1(){
+        API api = retrofitClient.getClien().create(API.class);
+        api.dangNhap(atvuser.getText().toString(), atvpass.getText().toString()).enqueue(new Callback<NguoiDung>() {
+            @Override
+            public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
+                if (response.code() == 200){
+                    nguoiDungs1.add(response.body());
+                    System.out.println(nguoiDungs);
+
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
+                else if (response.code() == 404){
+
                 }
             }
 
