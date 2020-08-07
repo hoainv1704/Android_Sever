@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId())
         {
             case R.id.sach:
@@ -117,10 +120,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toolbar.setTitle("Hóa đơn");
                 break;
             case R.id.thongtinnguoidung:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new NguoiDungFragment()).commit();
-                toolbar.setTitle("Thông tin cá nhân");
-                break;
+                if(!saved_user.equals("Guest")){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new NguoiDungFragment()).commit();
+                    toolbar.setTitle("Thông tin cá nhân");
+
+                    break;
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Chức năng không khả dụng!", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+
             case R.id.gioithieu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new GioiThieuFragment()).commit();

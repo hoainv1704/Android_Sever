@@ -21,7 +21,15 @@ public interface API {
 
      @FormUrlEncoded
      @POST ("/dangNhap")
-    Call<NguoiDung>dangNhap(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass);
+     Call<NguoiDung>dangNhap(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass);
+     //Cập nhât sở thích trong survey
+    @FormUrlEncoded
+    @POST ("/capNhatSoThich")
+    Call<Void>capNhatSoThich(@Field("tenNguoiDung") String userName, @Field("tag1") String tag1, @Field("tag2") String tag2);
+    //Đổi mật khẩu qua Dialog
+    @FormUrlEncoded
+    @POST ("/doiMatKhau")
+    Call<Void>doiMatKhau(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass, @Field("matKhauMoi")String matKhauMoi);
 
      @FormUrlEncoded
      @POST ("/chitietsach")

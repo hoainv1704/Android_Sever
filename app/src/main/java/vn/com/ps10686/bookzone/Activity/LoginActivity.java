@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         bt=findViewById(R.id.btnSignIn);
         tvSignUp=findViewById(R.id.tvSignUp);
 
-        dangNhap1();
+//        dangNhap1();
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,11 +55,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    boolean isNguoiDungCu=false;
+//    public static boolean isNguoiDungCu=false;
     void checkNguoiDungDaLamSurvey(){
         //Nếu đã làm survey\
         NguoiDung nguoiDung = nguoiDungs.get(0);
-        if(isNguoiDungCu){
+        if(nguoiDung.isDaLamSurvey()){
             Intent i=new Intent(LoginActivity.this,MainActivity.class);
             Bundle b = new Bundle();
             b.putString("_id", nguoiDung.get_id());
@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         api.dangNhap(atvuser.getText().toString(), atvpass.getText().toString()).enqueue(new Callback<NguoiDung>() {
             @Override
             public void onResponse(Call<NguoiDung> call, Response<NguoiDung> response) {
+                nguoiDungs.clear();
                 if (response.code() == 200){
                     nguoiDungs.add(response.body());
                     System.out.println(nguoiDungs);

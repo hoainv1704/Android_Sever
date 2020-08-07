@@ -18,6 +18,7 @@ import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
 
 import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
+import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL4;
 
 public class FlipperAdapter extends BaseAdapter {
 
@@ -66,7 +67,7 @@ public class FlipperAdapter extends BaseAdapter {
 
         ImageView topSach = (ImageView) view.findViewById(R.id.topSach);
         Picasso.with(context)
-                .load(ROOT_URL + list.get(i).getHinh().substring(7))
+                .load(ROOT_URL4 + list.get(i).getHinh().substring(7))
                 .placeholder(R.drawable.avatar)
                 .into(topSach);
         return view;

@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,8 @@ public class TagAdapter extends BaseAdapter {
     private Context context;
 //    private final int idLayout = R.layout.check_box_item_layout;
     private ArrayList<Tag> listTag;
+    public static int slSoThich = 0;
+    public static ArrayList<String> sothichs = new ArrayList<>();
     private int positionSelect = -1;
 
     public TagAdapter(Context context, ArrayList<Tag> listTag) {
@@ -56,20 +61,42 @@ public class TagAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.check_box_item_layout, viewGroup,false);
         }
         mapOnEachItem(view);
-        Tag tag = listTag.get(i);
+        final Tag tag = listTag.get(i);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(context.getResources().getDrawable(tag.getMauNhan()));
         }
         tvTenTag.setText(tag.getTenNhan());
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, i+"", Toast.LENGTH_SHORT).show();
-                chkBoxYeuThich= view.findViewById(R.id.chkBoxYeuThich);
 
-                chkBoxYeuThich.setChecked(!chkBoxYeuThich.isChecked());
-            }
-        });
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    chkBoxYeuThich= view.findViewById(R.id.chkBoxYeuThich);
+
+                    if(slSoThich<2 && chkBoxYeuThich.isChecked()==false){
+//                        chkBoxYeuThich= view.findViewById(R.id.chkBoxYeuThich);
+                        chkBoxYeuThich.setChecked(!chkBoxYeuThich.isChecked());
+                        sothichs.add(tag.getTenNhan());
+                        Toast.makeText(context, tag.getTenNhan(), Toast.LENGTH_SHORT).show();
+                        slSoThich++;
+
+                    }
+                    else if(slSoThich<=2 && chkBoxYeuThich.isChecked()==true) {
+//                        chkBoxYeuThich= view.findViewById(R.id.chkBoxYeuThich);
+                        chkBoxYeuThich.setChecked(!chkBoxYeuThich.isChecked());
+                        sothichs.remove(sothichs.size()-1);
+                        slSoThich--;
+
+                    }
+                    else {
+                        Toast.makeText(context, "Xin chỉ chọn 2!", Toast.LENGTH_SHORT).show();
+                    }
+
+
+//                    Log.d("SL Tag", slSoThich+"");
+                }
+            });
+
+
 
         return view;
     }

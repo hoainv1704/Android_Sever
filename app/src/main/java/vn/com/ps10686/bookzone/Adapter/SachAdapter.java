@@ -19,6 +19,7 @@ import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
 
 import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
+import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL4;
 
 public class SachAdapter extends BaseAdapter {
 
@@ -68,7 +69,7 @@ public class SachAdapter extends BaseAdapter {
         }
 
         Sach1 sach = saches.get(i);
-        Picasso.with(context).load( ROOT_URL + sach.getHinh().substring(7)).into(holder.imgView);
+        Picasso.with(context).load( ROOT_URL4 + sach.getHinh().substring(7)).into(holder.imgView);
 
         return view;
     }
