@@ -18,6 +18,7 @@ public interface API {
      @FormUrlEncoded
     @POST ("/dangKy")
     Call<Void>dangKy(@Field("tenNguoiDung") String userName, @Field("email") String email,  @Field("matKhau")String userPass);
+
      @FormUrlEncoded
      @POST ("/dangNhap")
     Call<NguoiDung>dangNhap(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass);

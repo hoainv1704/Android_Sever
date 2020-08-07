@@ -202,6 +202,7 @@ public class IntroActivity extends AppCompatActivity {
         anim3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
     }
 
+<<<<<<< HEAD
 //    private void getSach(){
 //        API api = retrofitClient.getClien().create(API.class);
 //        api.getSach().enqueue(new Callback<List<Sach1>>() {
@@ -224,5 +225,29 @@ public class IntroActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
+=======
+    private void getSach(){
+        API api = retrofitClient.getClien().create(API.class);
+        api.getSach().enqueue(new Callback<List<Sach1>>() {
+            @Override
+            public void onResponse(Call<List<Sach1>> call, Response<List<Sach1>> response) {
+                List<Sach1> ds = response.body();
+                System.out.println("id sach: " + response.body());
+                for (int i = 0; i < ds.size(); i++){
+                    Sach1 sach1 = ds.get(i);
+                    sach1s.add(sach1);
+                    sach2s.add(sach1);
+                    sach3s.add(sach1);
+                }
+                System.out.println("sách" + sach1s);
+            }
+
+            @Override
+            public void onFailure(Call<List<Sach1>> call, Throwable t) {
+                Log.i("Sach", t.getMessage());
+            }
+        });
+    }
+>>>>>>> 2b12246c96c65e03dbb45bb9a08f441c039cfcd1
 }
 
