@@ -14,9 +14,11 @@ import vn.com.ps10686.bookzone.Model.Sach1;
 public interface API {
     @GET ("/allSach")
     Call<List<Sach1>> getSach();
+
      @FormUrlEncoded
     @POST ("/dangKy")
     Call<Void>dangKy(@Field("tenNguoiDung") String userName, @Field("email") String email,  @Field("matKhau")String userPass);
+
      @FormUrlEncoded
      @POST ("/dangNhap")
     Call<NguoiDung>dangNhap(@Field("tenNguoiDung") String userName, @Field("matKhau")String userPass);

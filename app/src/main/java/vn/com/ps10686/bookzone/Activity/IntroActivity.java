@@ -209,7 +209,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onResponse(Call<List<Sach1>> call, Response<List<Sach1>> response) {
                 List<Sach1> ds = response.body();
                 System.out.println("id sach: " + response.body());
-                for (int i = 0; i <ds.size(); i++){
+                for (int i = 0; i < ds.size(); i++){
                     Sach1 sach1 = ds.get(i);
                     sach1s.add(sach1);
                     sach2s.add(sach1);
