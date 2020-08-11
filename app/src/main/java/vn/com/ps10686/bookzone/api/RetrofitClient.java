@@ -15,7 +15,7 @@ public class RetrofitClient {
     //Khoa IP
     public static final String ROOT_URL3 = "http://192.168.0.106:1996/";
     //IP nhà Khoa
-    public static final String ROOT_URL4 = "http://192.168.0.104:1996/";
+    public static final String ROOT_URL4 = "http://192.168.0.105:1996/";
 
 
     public static Retrofit retrofit = null;

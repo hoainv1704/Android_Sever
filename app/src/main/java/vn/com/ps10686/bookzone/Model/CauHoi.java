@@ -1,26 +1,32 @@
 package vn.com.ps10686.bookzone.Model;
 
 public class CauHoi {
-    String maCauHoi;
+    String cauHoi;
     String maSach;
-    String maQuanTriVien;
+    String cauTraLoi;
+    String gia;
 
-    public CauHoi(){
-
-    }
-
-    public CauHoi(String maCauHoi, String maSach, String maQuanTriVien) {
-        this.maCauHoi = maCauHoi;
+    public CauHoi(String cauHoi, String maSach, String cauTraLoi, String gia) {
+        this.cauHoi = cauHoi;
         this.maSach = maSach;
-        this.maQuanTriVien = maQuanTriVien;
+        this.cauTraLoi = cauTraLoi;
+        this.gia = gia;
     }
 
-    public String getMaCauHoi() {
-        return maCauHoi;
+    public CauHoi() {
+
     }
 
-    public void setMaCauHoi(String maCauHoi) {
-        this.maCauHoi = maCauHoi;
+    public CauHoi(String cauHoi) {
+        this.cauHoi = cauHoi;
+    }
+
+    public String getCauHoi() {
+        return cauHoi;
+    }
+
+    public void setCauHoi(String cauHoi) {
+        this.cauHoi = cauHoi;
     }
 
     public String getMaSach() {
@@ -31,11 +37,29 @@ public class CauHoi {
         this.maSach = maSach;
     }
 
-    public String getMaQuanTriVien() {
-        return maQuanTriVien;
+    public String getCauTraLoi() {
+        return cauTraLoi;
     }
 
-    public void setMaQuanTriVien(String maQuanTriVien) {
-        this.maQuanTriVien = maQuanTriVien;
+    public void setCauTraLoi(String cauTraLoi) {
+        this.cauTraLoi = cauTraLoi;
+    }
+
+    public String getGia() {
+        return gia;
+    }
+
+    public void setGia(String gia) {
+        this.gia = gia;
+    }
+
+    @Override
+    public String toString() {
+        return "CauHoi{" +
+                "cauHoi='" + cauHoi + '\'' +
+                ", maSach='" + maSach + '\'' +
+                ", cauTraLoi='" + cauTraLoi + '\'' +
+                ", gia='" + gia + '\'' +
+                '}';
     }
 }

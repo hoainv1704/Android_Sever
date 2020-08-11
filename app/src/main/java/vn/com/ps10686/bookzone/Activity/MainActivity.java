@@ -33,10 +33,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.com.ps10686.bookzone.Fragments.NguoiDungFragment;
+import vn.com.ps10686.bookzone.Fragments.SachCuaBanFragment;
 import vn.com.ps10686.bookzone.GioHangFragment;
 import vn.com.ps10686.bookzone.GioiThieuFragment;
 import vn.com.ps10686.bookzone.HoaDonFragment;
 import vn.com.ps10686.bookzone.Model.BinhLuan;
+import vn.com.ps10686.bookzone.Model.CauHoi;
 import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
@@ -54,15 +56,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    public static NguoiDung nguoiDungSauDangNhap;
     public static String username;
     public static float sodu;
-    public static ArrayList<Sach1> sach1s = new ArrayList<>();
-    public static ArrayList<Sach1> sach2s = new ArrayList<>();;
-    public static ArrayList<Sach1> sach3s = new ArrayList<>();;
+    public static ArrayList<Sach1> sach1s;
+    public static ArrayList<Sach1> sach2s;
+    public static ArrayList<Sach1> sach3s;
     RetrofitClient retrofitClient = new RetrofitClient();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sach1s = new ArrayList<>();
+        sach2s = new ArrayList<>();
+        sach3s = new ArrayList<>();
         getSach();
         sharedPref=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = sharedPref.edit();
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.hoadon:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HoaDonFragment()).commit();
+                        new GioHangFragment()).commit();
                 toolbar.setTitle("Hóa đơn");
                 break;
             case R.id.thongtinnguoidung:
@@ -136,6 +140,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new GioiThieuFragment()).commit();
                 toolbar.setTitle("Giới thiệu");
+                break;
+            case R.id.sachcuaban:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SachCuaBanFragment()).commit();
+                toolbar.setTitle("Sách của bạn");
                 break;
             case R.id.thoat:
                 AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);

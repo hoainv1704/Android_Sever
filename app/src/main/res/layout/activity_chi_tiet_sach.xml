@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -89,10 +94,50 @@
         android:layout_below="@id/cts_sach"
         android:id="@+id/rcvBL"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
-    <EditText
+
+    <LinearLayout
+        android:id="@+id/ttCauHoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_below="@id/rcvBL"
+        android:layout_margin="5dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="cau hoi"
+            android:textSize="20dp"
+            android:textStyle="italic|bold"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="cau tra loi"
+            android:textSize="20dp"
+            android:textStyle="italic|bold"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvCauHoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ttCauHoi"
+        android:layout_margin="5dp"
+        />
+    <EditText
+        android:layout_below="@id/lvCauHoi"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:id="@+id/edtNewBL"
@@ -101,7 +146,7 @@
         />
     <Button
         android:layout_margin="5dp"
-        android:layout_below="@id/rcvBL"
+        android:layout_below="@id/lvCauHoi"
         android:layout_toRightOf="@+id/edtNewBL"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
@@ -109,3 +154,4 @@
         android:id="@+id/btnBL"
         android:text="Send"/>
 </RelativeLayout>
+</ScrollView>

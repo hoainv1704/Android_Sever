@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,6 +33,7 @@ import vn.com.ps10686.bookzone.Adapter.FlipperAdapter;
 import vn.com.ps10686.bookzone.Adapter.SachAdapter;
 import vn.com.ps10686.bookzone.Adapter.SearchAdapter;
 import vn.com.ps10686.bookzone.Model.BinhLuan;
+import vn.com.ps10686.bookzone.Model.CauHoi;
 import vn.com.ps10686.bookzone.Model.NguoiDung;
 import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.Model.Sach1;
@@ -57,6 +59,7 @@ public class SachFragment extends Fragment {
     RetrofitClient retrofitClient;
 
     public static ArrayList<BinhLuan> bls;
+    public static ArrayList<CauHoi> chs;
 
     public static String id;
 
@@ -78,11 +81,23 @@ public class SachFragment extends Fragment {
         adapterViewFlipper = view.findViewById(R.id.viewAdapter);
         listView = (ListView) view.findViewById(R.id.listview);
         // sét adapter choh view flipper
-        flipperAdapter = new FlipperAdapter(getContext(), sach1s);
-        adapterViewFlipper.setAdapter(flipperAdapter);
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                flipperAdapter = new FlipperAdapter(getContext(), sach1s);
+                adapterViewFlipper.setAdapter(flipperAdapter);
+            }
+        }, 1000);
+
         adapterViewFlipper.setFlipInterval(3000);
         adapterViewFlipper.setAutoStart(true);
         // sét adapter cho gridview sách
+
+
         sachAdapter = new SachAdapter(getContext(), R.layout.row_sach, sach3s);
         grView.setAdapter(sachAdapter);
         // sét adapter cho search view
@@ -152,6 +167,33 @@ public class SachFragment extends Fragment {
                     }
                 });
 
+                System.out.println("sach 3" + sach3s);
+                API api2 = retrofitClient.getClien().create(API.class);
+                api2.getCH(sach3s.get(i).get_id()).enqueue(new Callback<List<CauHoi>>() {
+                    @Override
+                    public void onResponse(Call<List<CauHoi>> call, Response<List<CauHoi>> response) {
+                        if (response.code() == 200) {
+                            chs = new ArrayList<>();
+                            List<CauHoi> cauHois = response.body();
+
+                            for (int i = 0; i < cauHois.size(); i++) {
+                                chs.add(cauHois.get(i));
+                            }
+
+                            System.out.println("cauhoi :" + chs);
+                            Toast.makeText(getContext(), "Lấy dữ liệu thành công", Toast.LENGTH_SHORT).show();
+
+                        } else if (response.code() == 600) {
+                            Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<CauHoi>> call, Throwable t) {
+                        Log.i("Sach", t.getMessage());
+                    }
+                });
+
             }
         });
 
@@ -198,31 +240,31 @@ public class SachFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public void getBL() {
-        API api = retrofitClient.getClien().create(API.class);
-        api.getBL(sach3s.get(0).get_id()).enqueue(new Callback<List<BinhLuan>>() {
-            @Override
-            public void onResponse(Call<List<BinhLuan>> call, Response<List<BinhLuan>> response) {
-                if (response.code() == 200) {
-
-                    List<BinhLuan> binhLuanss = response.body();
-
-                    for (int i = 0; i < binhLuanss.size(); i++) {
-                        bls.add(binhLuanss.get(i));
-                    }
-
-                    System.out.println("chi tiet sach: " + binhLuanss);
-                    Toast.makeText(getContext(), "Lấy dữ liệu thành công", Toast.LENGTH_SHORT).show();
-
-                } else if (response.code() == 600) {
-                    Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<BinhLuan>> call, Throwable t) {
-                Log.i("Sach", t.getMessage());
-            }
-        });
-    }
+//    public void getBL() {
+//        API api = retrofitClient.getClien().create(API.class);
+//        api.getBL(sach3s.get(0).get_id()).enqueue(new Callback<List<BinhLuan>>() {
+//            @Override
+//            public void onResponse(Call<List<BinhLuan>> call, Response<List<BinhLuan>> response) {
+//                if (response.code() == 200) {
+//
+//                    List<BinhLuan> binhLuanss = response.body();
+//
+//                    for (int i = 0; i < binhLuanss.size(); i++) {
+//                        bls.add(binhLuanss.get(i));
+//                    }
+//
+//                    System.out.println("chi tiet sach: " + binhLuanss);
+//                    Toast.makeText(getContext(), "Lấy dữ liệu thành công", Toast.LENGTH_SHORT).show();
+//
+//                } else if (response.code() == 600) {
+//                    Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<BinhLuan>> call, Throwable t) {
+//                Log.i("Sach", t.getMessage());
+//            }
+//        });
+//    }
 }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.com.ps10686.bookzone.Adapter.BinhLuanAdapter;
+import vn.com.ps10686.bookzone.Adapter.CauHoiAdapter;
 import vn.com.ps10686.bookzone.Model.BinhLuan;
 import vn.com.ps10686.bookzone.Model.NguoiDung;
 import vn.com.ps10686.bookzone.Model.Sach1;
@@ -31,15 +33,18 @@ import vn.com.ps10686.bookzone.api.RetrofitClient;
 import static vn.com.ps10686.bookzone.Activity.MainActivity.saved_user;
 import static vn.com.ps10686.bookzone.Activity.MainActivity.username;
 import static vn.com.ps10686.bookzone.SachFragment.bls;
+import static vn.com.ps10686.bookzone.SachFragment.chs;
 import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
 
 public class ChiTietSach extends AppCompatActivity {
 
    public ImageView imvHinh;
    public TextView tvTenSach,tvTenLoai,tvNhaXB,tvNamXB,tvTaiBan,tvTacGia;
+   ListView lvCauHoi;
    Button btnBL;
    EditText edtBL;
    BinhLuanAdapter binhLuanAdapter;
+   CauHoiAdapter cauHoiAdapter;
    LinearLayoutManager linearLayoutManager;
    public RecyclerView rcvBL;
    RetrofitClient retrofitClient;
@@ -55,9 +60,12 @@ public class ChiTietSach extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         rcvBL.setLayoutManager(linearLayoutManager);
 
-        binhLuanAdapter = new BinhLuanAdapter(ChiTietSach.this, bls);
+        cauHoiAdapter = new CauHoiAdapter(chs,this , R.layout.row_cauhoi);
+        lvCauHoi.setAdapter(cauHoiAdapter);
 
+        binhLuanAdapter = new BinhLuanAdapter(ChiTietSach.this, bls);
         rcvBL.setAdapter(binhLuanAdapter);
+
         binhLuanAdapter.notifyDataSetChanged();
 
         Bundle bundle = getIntent().getBundleExtra("chitietsach");
@@ -99,6 +107,7 @@ public class ChiTietSach extends AppCompatActivity {
         rcvBL = findViewById(R.id.rcvBL);
         btnBL = findViewById(R.id.btnBL);
         edtBL = findViewById(R.id.edtNewBL);
+        lvCauHoi = findViewById(R.id.lvCauHoi);
     }
 
     public void addBL (){

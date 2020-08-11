@@ -20,6 +20,11 @@
             android:title="Thông tin cá nhân"
             android:icon="@drawable/ic_action_info"
             />
+        <item
+            android:id="@+id/sachcuaban"
+            android:title="Sách của bạn"
+            android:icon="@drawable/ic_sachcuaban"
+            />
     </group>
 
     <item android:title="">

@@ -8,6 +8,10 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import vn.com.ps10686.bookzone.Model.BinhLuan;
+import vn.com.ps10686.bookzone.Model.CauHoi;
+import vn.com.ps10686.bookzone.Model.HDFTraVe;
+import vn.com.ps10686.bookzone.Model.HoaDon;
+import vn.com.ps10686.bookzone.Model.HoaDonFinal;
 import vn.com.ps10686.bookzone.Model.NguoiDung;
 import vn.com.ps10686.bookzone.Model.Sach1;
 
@@ -38,8 +42,26 @@ public interface API {
      @FormUrlEncoded
     @POST ("/addBL")
     Call<Void>addBL(@Field("ndBL") String ndBL, @Field("tenNguoiDung") String _idND, @Field("maSach") String _id);
+
     @FormUrlEncoded
     @POST ("/bl")
     Call<List<BinhLuan>> getBL(@Field("maSach")String _id);
+
+    @FormUrlEncoded
+    @POST ("/cauhois")
+    Call<List<CauHoi>> getCH(@Field("maSach")String _id);
+
+    @FormUrlEncoded
+    @POST ("/hoadonfinal")
+    Call<Void>themHD(@Field("tenNguoiDung") String tenNguoiDung, @Field("hoaDon")List<HoaDonFinal> hoaDonFinals);
+
+    @FormUrlEncoded
+    @POST ("/getCTL")
+    Call<CauHoi>getCTL(@Field("maSach")String maSach,@Field("cauHoi")String cauHoi);
+
+    @FormUrlEncoded
+    @POST ("/getAllHD")
+    Call<List<HoaDon>>getAllHD(@Field("tenNguoiDung")String tenNguoiDung);
+
 }
 
