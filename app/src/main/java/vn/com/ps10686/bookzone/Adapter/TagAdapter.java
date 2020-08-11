@@ -23,7 +23,6 @@ import vn.com.ps10686.bookzone.R;
 
 public class TagAdapter extends BaseAdapter {
     private Context context;
-//    private final int idLayout = R.layout.check_box_item_layout;
     private ArrayList<Tag> listTag;
     private int positionSelect = -1;
 

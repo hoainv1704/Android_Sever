@@ -1,8 +1,6 @@
 package vn.com.ps10686.bookzone.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +11,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import vn.com.ps10686.bookzone.Activity.ChiTietSach;
-import vn.com.ps10686.bookzone.Model.Sach;
 import vn.com.ps10686.bookzone.Model.Sach1;
 import vn.com.ps10686.bookzone.R;
 
@@ -40,7 +36,6 @@ public class SachAdapter extends BaseAdapter {
     @Override
     public Object getItem(int i)
     {
-
         return null;
     }
 
