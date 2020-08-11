@@ -35,6 +35,7 @@ import static vn.com.ps10686.bookzone.Activity.MainActivity.username;
 import static vn.com.ps10686.bookzone.SachFragment.bls;
 import static vn.com.ps10686.bookzone.SachFragment.chs;
 import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL;
+import static vn.com.ps10686.bookzone.api.RetrofitClient.ROOT_URL4;
 
 public class ChiTietSach extends AppCompatActivity {
 
@@ -85,7 +86,7 @@ public class ChiTietSach extends AppCompatActivity {
         tvNamXB.setText("Năm xuất bản: "+ namXB);
         tvTaiBan.setText("Tái bản: " +taiBan);
         Picasso.with(this)
-                .load(ROOT_URL + hinh.substring(7))
+                .load(ROOT_URL4 + hinh.substring(7))
                 .into(imvHinh);
 
         btnBL.setOnClickListener(new View.OnClickListener() {

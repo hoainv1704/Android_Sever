@@ -53,7 +53,7 @@ public interface API {
 
     @FormUrlEncoded
     @POST ("/hoadonfinal")
-    Call<Void>themHD(@Field("tenNguoiDung") String tenNguoiDung, @Field("hoaDon")List<HoaDonFinal> hoaDonFinals);
+    Call<Void>themHD(@Field("tenNguoiDung") String tenNguoiDung, @Field("hoaDon")List<HoaDonFinal> hoaDonFinals,@Field("giaTien")Float giaTien );
 
     @FormUrlEncoded
     @POST ("/getCTL")
@@ -61,7 +61,7 @@ public interface API {
 
     @FormUrlEncoded
     @POST ("/getAllHD")
-    Call<List<HoaDon>>getAllHD(@Field("tenNguoiDung")String tenNguoiDung);
+    Call<List<String>>getAllHD(@Field("tenNguoiDung")String tenNguoiDung);
 
 }
 

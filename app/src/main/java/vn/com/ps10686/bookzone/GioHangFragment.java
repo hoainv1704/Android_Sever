@@ -42,12 +42,13 @@ public class GioHangFragment extends Fragment {
     public static int total = 0;
     String jsonCartList;
     ListView lv_giohang;
+
     Button btn_placeorder;
 
     GioHangAdapter gioHangAdapter;
     RetrofitClient retrofitClient;
 
-
+float giatien;
     public GioHangFragment() {
         // Required empty public constructor
     }
@@ -59,6 +60,8 @@ public class GioHangFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_cart, container, false);
         lv_giohang = view.findViewById(R.id.lv_giohang);
+        tv_total =view.findViewById(R.id.tv_total);
+        tinhtien();
         btn_placeorder = view.findViewById(R.id.btn_placeorder);
 
         gioHangAdapter = new GioHangAdapter(getContext(), R.layout.one_item_cart, cauhoimuonmua);
@@ -93,13 +96,14 @@ public class GioHangFragment extends Fragment {
     void themHoaDon() {
 
         tongketHD();
-
         API api = retrofitClient.getClien().create(API.class);
-        api.themHD(saved_user,hoaDonFinals).enqueue(new Callback<Void>() {
+        api.themHD(saved_user,hoaDonFinals, giatien).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 200){
                     cauhoimuonmua.clear();
+                    giatien=0;
+                    tv_total.setText(giatien+"");
                     gioHangAdapter.notifyDataSetChanged();
                 }
             }
@@ -117,17 +121,20 @@ public class GioHangFragment extends Fragment {
         hoaDonFinals = new ArrayList<>();
 
         for (int i = 0; i < cauhoimuonmua.size(); i++) {
-
             HoaDonFinal hoaDonFinal = new HoaDonFinal();
             CauHoi cauHoi = cauhoimuonmua.get(i);
-
             hoaDonFinal.setCauHoi(cauHoi.getCauHoi());
             hoaDonFinal.setGia(Float.valueOf(cauHoi.getGia()));
             hoaDonFinal.setMaSach(cauHoi.getMaSach());
-
             hoaDonFinals.add(hoaDonFinal);
         }
-
+    }
+    void tinhtien(){
+        giatien=0;
+        for (int i = 0; i < cauhoimuonmua.size(); i++) {
+            giatien +=Float.valueOf(cauhoimuonmua.get(i).getGia());
+        }
+        tv_total.setText(giatien+"");
 
     }
 }

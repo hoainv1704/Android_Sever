@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,10 +29,10 @@ public class SachCuaBanAdapter extends BaseAdapter {
 
     Context context;
     int layout;
-    List<HoaDonFinal> hoaDonFinals;
+    ArrayList<HoaDonFinal> hoaDonFinals;
     RetrofitClient retrofitClient;
 
-    public SachCuaBanAdapter(Context context, int layout, List<HoaDonFinal> hoaDonFinals) {
+    public SachCuaBanAdapter(Context context, int layout, ArrayList<HoaDonFinal> hoaDonFinals) {
         this.context = context;
         this.layout = layout;
         this.hoaDonFinals = hoaDonFinals;
@@ -62,16 +63,41 @@ public class SachCuaBanAdapter extends BaseAdapter {
         viewHolder.cauHoi = convertView.findViewById(R.id.scb_cauhoi);
 
         viewHolder.cauHoi.setText(hoaDonFinals.get(position).getCauHoi());
-
+//        viewHolder.cauHoi.setText("????");
         final HoaDonFinal hoaDonFinal = hoaDonFinals.get(position);
 
         viewHolder.cauHoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Cau tra loi")
-                        .setMessage(getCTL(hoaDonFinal.getMaSach(),hoaDonFinal.getCauHoi()))
-                        .show();
+                API api = retrofitClient.getClien().create(API.class);
+
+                api.getCTL(hoaDonFinal.getMaSach(), hoaDonFinal.getCauHoi()).enqueue(new Callback<CauHoi>() {
+                    @Override
+                    public void onResponse(Call<CauHoi> call, Response<CauHoi> response) {
+                        if (response.code() == 200){
+//                    List<CauHoi> cauTL =  response.body();
+                            CauHoi cauHoi = response.body();
+                            ctl = cauHoi.getCauTraLoi();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setTitle("Cau tra loi")
+                                    .setMessage(ctl).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            }).show();
+
+                        }else if(response.code() == 404){
+                            ctl = "";
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CauHoi> call, Throwable t) {
+
+                    }
+                });
+
             }
         });
 
@@ -85,28 +111,9 @@ public class SachCuaBanAdapter extends BaseAdapter {
         TextView cauHoi;
     }
     String ctl;
-    String getCTL(String maSach ,String cauHoi){
-        API api = retrofitClient.getClien().create(API.class);
+    void getCTL(String maSach ,String cauHoi){
 
-        api.getCTL(maSach, cauHoi).enqueue(new Callback<CauHoi>() {
-            @Override
-            public void onResponse(Call<CauHoi> call, Response<CauHoi> response) {
-                if (response.code() == 200){
-//                    List<CauHoi> cauTL =  response.body();
-                    CauHoi cauHoi = response.body();
-                    ctl = cauHoi.getCauTraLoi();
 
-                }else if(response.code() == 404){
-                    ctl = "";
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CauHoi> call, Throwable t) {
-
-            }
-        });
-        return ctl;
     }
 
 }

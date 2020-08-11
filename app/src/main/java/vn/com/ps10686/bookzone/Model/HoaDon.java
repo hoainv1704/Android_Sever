@@ -1,55 +1,29 @@
 package vn.com.ps10686.bookzone.Model;
 
+import java.util.ArrayList;
+
 public class HoaDon {
-    String maHoaDon;
-    String maNguoiDung;
-    String ngayPhatSinh;
-    float tienThanhToan;
+    public     ArrayList<HoaDonFinal> hoaDonFinals;
+
+    public HoaDon(ArrayList<HoaDonFinal> hoaDonFinals) {
+        this.hoaDonFinals = hoaDonFinals;
+    }
     public HoaDon(){
 
     }
 
-    public HoaDon(String maNguoiDung, String ngayPhatSinh) {
-        this.maNguoiDung = maNguoiDung;
-        this.ngayPhatSinh = ngayPhatSinh;
+    public ArrayList<HoaDonFinal> getHoaDonFinals() {
+        return hoaDonFinals;
     }
 
-    public HoaDon(String maHoaDon, String maNguoiDung, String ngayPhatSinh, float tienThanhToan ) {
-        this.maHoaDon = maHoaDon;
-        this.maNguoiDung = maNguoiDung;
-        this.ngayPhatSinh = ngayPhatSinh;
-        this.tienThanhToan = tienThanhToan;
+    public void setHoaDonFinals(ArrayList<HoaDonFinal> hoaDonFinals) {
+        this.hoaDonFinals = hoaDonFinals;
     }
 
-    public String getMaHoaDon() {
-        return maHoaDon;
-    }
-
-    public void setMaHoaDon(String maHoaDon) {
-        this.maHoaDon = maHoaDon;
-    }
-
-    public String getMaNguoiDung() {
-        return maNguoiDung;
-    }
-
-    public void setMaNguoiDung(String maNguoiDung) {
-        this.maNguoiDung = maNguoiDung;
-    }
-
-    public String getNgayPhatSinh() {
-        return ngayPhatSinh;
-    }
-
-    public void setNgayPhatSinh(String ngayPhatSinh) {
-        this.ngayPhatSinh = ngayPhatSinh;
-    }
-
-    public float getTienThanhToan() {
-        return tienThanhToan;
-    }
-
-    public void setTienThanhToan(float tienThanhToan) {
-        this.tienThanhToan = tienThanhToan;
+    @Override
+    public String toString() {
+        return "HoaDon{" +
+                "hoaDonFinals=" + hoaDonFinals +
+                '}';
     }
 }

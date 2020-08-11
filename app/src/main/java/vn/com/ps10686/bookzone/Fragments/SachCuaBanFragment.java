@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,20 +58,37 @@ public class SachCuaBanFragment extends Fragment {
 
     void getHDFinal() {
         API api = retrofitClient.getClien().create(API.class);
-        api.getAllHD(saved_user).enqueue(new Callback<List<HoaDon>>() {
+        api.getAllHD(saved_user).enqueue(new Callback<List<String>>() {
             @Override
-            public void onResponse(Call<List<HoaDon>> call, Response<List<HoaDon>> response) {
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
                 if(response.code()==200){
+                    List<String> HDFs = response.body();
+                    for(int i =0; i<HDFs.size(); i++){
+                        HoaDonFinal hoaDonFinal = new HoaDonFinal();
+                        hoaDonFinal.setCauHoi(xuLyCauHoi(HDFs.get(i)));
+                        hoaDonFinal.setMaSach(xuLyMaSach(HDFs.get(i)));
 
-                    System.out.println(response.body());
+                        hoaDonFinals.add(hoaDonFinal);
+                    }
+                    System.out.println(hoaDonFinals.size()+"");
+                    sachCuaBanAdapter = new SachCuaBanAdapter(getContext(), R.layout.row_sachcuaban, hoaDonFinals);
+                    lvSCT.setAdapter(sachCuaBanAdapter);
+                }
+                else if(response.code()==404){
+                    Toast.makeText(getContext(), "Not Good", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<HoaDon>> call, Throwable t) {
+            public void onFailure(Call<List<String>> call, Throwable t) {
 
             }
         });
-
+    }
+    String xuLyCauHoi(String HDF){
+        return HDF.substring(HDF.indexOf("Hoi=")+5, HDF.indexOf("gia=")-3);
+    }
+    String xuLyMaSach(String HDF){
+        return HDF.substring(HDF.indexOf("Sach=")+6, HDF.lastIndexOf("}")-1);
     }
 }
