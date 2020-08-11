@@ -41,11 +41,11 @@ public class OptionActivity extends AppCompatActivity {
         });
     }
     SharedPreferences sharedPref;
-    boolean isNguoiDungCu=false;
+    boolean isNguoiDungCu1=true;
 
     void checkNguoiDungDaLamSurvey(){
         //Nếu đã làm survey
-        if(isNguoiDungCu){
+        if(isNguoiDungCu1){
             Intent i=new Intent(OptionActivity.this,MainActivity.class);
             Bundle b = new Bundle();
             b.putString("username","Guest");

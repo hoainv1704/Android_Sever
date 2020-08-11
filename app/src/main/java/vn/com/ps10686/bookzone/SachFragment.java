@@ -56,7 +56,7 @@ public class SachFragment extends Fragment {
     Button previous;
     RetrofitClient retrofitClient;
 
-    public static ArrayList<BinhLuan> bls = new ArrayList<>();
+    public static ArrayList<BinhLuan> bls;
 
     public static String id;
 
@@ -98,7 +98,7 @@ public class SachFragment extends Fragment {
                 api.chitietsach(sach3s.get(i).get_id()).enqueue(new Callback<Sach1>() {
                     @Override
                     public void onResponse(Call<Sach1> call, Response<Sach1> response) {
-                        if (response.code() == 200){
+                        if (response.code() == 200) {
 
                             ArrayList<Sach1> sachChiTiets = new ArrayList<>();
                             sachChiTiets.add(response.body());
@@ -116,8 +116,7 @@ public class SachFragment extends Fragment {
                             bundle.putString("_id", sachChiTiets.get(0).get_id());
                             intent.putExtra("chitietsach", bundle);
                             startActivity(intent);
-                        }
-                        else if (response.code() == 600){
+                        } else if (response.code() == 600) {
                             Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -131,19 +130,18 @@ public class SachFragment extends Fragment {
                 api1.getBL(sach3s.get(i).get_id()).enqueue(new Callback<List<BinhLuan>>() {
                     @Override
                     public void onResponse(Call<List<BinhLuan>> call, Response<List<BinhLuan>> response) {
-                        if (response.code() == 200){
+                        if (response.code() == 200) {
 
                             List<BinhLuan> binhLuanss = response.body();
-
-                            for (int i = 0; i < binhLuanss.size() ; i++){
+                            bls = new ArrayList<>();
+                            for (int i = 0; i < binhLuanss.size(); i++) {
                                 bls.add(binhLuanss.get(i));
                             }
 
-                            System.out.println("chi tiet sach: " + binhLuanss);
+                            System.out.println("binh luan: " + bls);
                             Toast.makeText(getContext(), "Lấy dữ liệu thành công", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else if (response.code() == 600){
+                        } else if (response.code() == 600) {
                             Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -200,24 +198,23 @@ public class SachFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public void getBL (){
+    public void getBL() {
         API api = retrofitClient.getClien().create(API.class);
         api.getBL(sach3s.get(0).get_id()).enqueue(new Callback<List<BinhLuan>>() {
             @Override
             public void onResponse(Call<List<BinhLuan>> call, Response<List<BinhLuan>> response) {
-                if (response.code() == 200){
+                if (response.code() == 200) {
 
                     List<BinhLuan> binhLuanss = response.body();
 
-                    for (int i = 0; i < binhLuanss.size() ; i++){
+                    for (int i = 0; i < binhLuanss.size(); i++) {
                         bls.add(binhLuanss.get(i));
                     }
 
                     System.out.println("chi tiet sach: " + binhLuanss);
                     Toast.makeText(getContext(), "Lấy dữ liệu thành công", Toast.LENGTH_SHORT).show();
 
-                }
-                else if (response.code() == 600){
+                } else if (response.code() == 600) {
                     Toast.makeText(getContext(), "Không có dữ liệu", Toast.LENGTH_SHORT).show();
                 }
             }

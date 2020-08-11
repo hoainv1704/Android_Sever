@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ĐỔI MẬT KHẨU"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:background="#FFEB3B"
+        android:gravity="center_horizontal" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mật khẩu hiện tại"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/etDialogPass"
+        android:inputType="textPassword"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mật khẩu mới"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/etDialogNewPass"
+        android:inputType="textPassword"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Xác nhận"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/etDialogNewPassConfirm"
+        android:inputType="textPassword"
+        />
+</LinearLayout>

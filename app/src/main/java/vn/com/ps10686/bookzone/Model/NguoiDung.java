@@ -9,7 +9,7 @@ public class NguoiDung {
     String maNhan1;
     String maNhan2;
     float soDu;
-
+    boolean daLamSurvey;
     public NguoiDung(String tenNguoiDung, String matKhau, String email, String sdt, String maNhan1, String maNhan2, float soDu) {
         this.tenNguoiDung = tenNguoiDung;
         this.matKhau = matKhau;
@@ -96,17 +96,26 @@ public class NguoiDung {
         this.soDu = soDu;
     }
 
+    public boolean isDaLamSurvey() {
+        return daLamSurvey;
+    }
+
+    public void setDaLamSurvey(boolean daLamSurvey) {
+        this.daLamSurvey = daLamSurvey;
+    }
+
     @Override
     public String toString() {
         return "NguoiDung{" +
-                "tenNguoiDung='" + tenNguoiDung + '\'' +
                 "_id='" + _id + '\'' +
+                ", tenNguoiDung='" + tenNguoiDung + '\'' +
                 ", matKhau='" + matKhau + '\'' +
                 ", email='" + email + '\'' +
                 ", sdt='" + sdt + '\'' +
                 ", maNhan1='" + maNhan1 + '\'' +
                 ", maNhan2='" + maNhan2 + '\'' +
                 ", soDu=" + soDu +
+                ", daLamSurvey=" + daLamSurvey +
                 '}';
     }
 }
